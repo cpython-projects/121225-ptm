@@ -183,3 +183,23 @@ numbers = [16, 18, 1, 6, 3, 2, 6, 2, 14, 3, 20, 15, 19, 4, 18, 15, 15, 4, 20, 18
 
 print({number for number in numbers if number % 3 == 0 or number % 5 == 0}) #20 не выводит
 
+recipes = {
+    ("flour", "egg", "milk"): "Pancakes",
+    ("egg", "milk", "butter"): "Omelette",
+    ("flour", "sugar", "butter"): "Cookies",
+    ("flour", "egg", "butter", "sugar"): "Cake",
+    ("milk", "flour", "egg"): "Waffles",
+    ("butter", "milk", "egg"): "Scrambled Eggs",
+    ("flour", "milk", "sugar", "butter"): "Sweet Bread"
+}
+_ingredients = "milk egg butter flour"   # input("Введите ингредиенты: ")
+_ingredients = set(_ingredients.split())
+
+new_recipes = []
+
+for ingredients, name in recipes.items():
+    if set(ingredients) <= _ingredients:
+        new_recipes.append(name)
+
+res = ', '.join(new_recipes) if new_recipes else 'No receipts'
+print(res)
