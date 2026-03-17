@@ -165,9 +165,71 @@ from collections import Counter
 # counter = Counter(data)
 # print(counter)
 
-words = ["cherry", "cherry", "cherry", "cherry", "cherry", "apple", "apple", "apple", "banana", "apple",  "banana", "apple"]
-counter = Counter(words)
-print(counter)
+# words = ["cherry", "cherry", "cherry", "cherry", "cherry", "apple", "apple", "apple", "banana", "apple",  "banana", "apple"]
+# counter = Counter(words)
+# print(counter)
+#
+#
+# print(counter.most_common(1))
+# for item in counter.elements():
+#     print(item)
+
+# counter = Counter("banana")
+# counter.subtract("ang")
+# print(counter)
+#
+# x = [1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 5]
+# y = [4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 10]
+#
+# x = Counter(x)
+# x.subtract(y)
+# print(x)
 
 
-print(counter.most_common(1))
+# x = {
+#     'apple': 10,
+#     'banana': 20,
+#     'cherry': 30,
+# }
+#
+# y = {
+#     'apple': 5,
+#     'banana': 10,
+#     'cherry': 20,
+# }
+#
+# x = Counter(x)
+# x.subtract(y)
+# print(x)
+
+#
+# c1 = Counter("banana")
+# c2 = Counter("apple")
+# print(c1 + c2)
+# print(c1 - c2)
+#
+# print(c1 & c2)
+# print(c1 | c2)
+
+from collections import OrderedDict
+
+tasks = OrderedDict({
+    "task1": "низкий",
+    "task2": "средний",
+    "task3": "высокий",
+    "task4": "низкий",
+    "task5": "высокий"
+})
+
+
+def ordered_tasks(tasks):
+    keys_to_end = [key for key, value in tasks.items() if "низкий" in value]
+    keys_to_start = [key for key, value in tasks.items() if "высокий" in value]
+    for key in keys_to_end:
+        tasks.move_to_end(key)
+    for key in keys_to_start:
+        tasks.move_to_end(key, last=False)
+    return tasks
+
+ordered_tasks(tasks)
+print(f"Очередь задач: {tasks}")
